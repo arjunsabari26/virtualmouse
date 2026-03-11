@@ -1,64 +1,63 @@
-# AI Virtual Mouse Using Hand Gestures
+# Virtual Mouse Controller Using Hand Gestures
 
-The "AI Virtual Mouse Using Hand Gestures" project is a machine learning-based application that allows users to control their computer mouse using hand gestures. The project uses computer vision techniques to recognize hand gestures and convert them into mouse movements. The application utilizes deep learning models to accurately predict hand movements and provides a user-friendly interface for users to interact with their computer.
+This project implements a touchless cursor controller allowing users to interact with their computers using hand gestures tracked in real-time by a webcam. 
 
-The project is designed to work on any computer with a camera, making it easily accessible to anyone interested in exploring the capabilities of computer vision and machine learning. The code for the project is available on a Github repository, making it open-source and available for contributions from the community.
+Using **Python, MediaPipe Hands, OpenCV, and PyAutoGUI**, the system interprets specific physical signals—such as raising specific fingers and tracking their distances relative to one another—and translates them seamlessly into executable mouse events.
 
-## Dependencies -
-Please install all the required dependencies.
+## Features
+- **Real-time Cursor Movement:** Move your cursor around the screen by simply pointing and moving your index finger.
+- **Gesture-based Clicking:** Intuitive left and right-clicking without physical buttons.
+- **Gesture-based Scrolling:** Dynamic swiping with two fingers vertically to scroll web pages and documents effortlessly.
+- **Smooth Object Tracking:** Uses movement smoothening algorithms alongside OpenCV frame reductions ensuring accurate translation minimizing cursor jittering.
 
-openCV - (For image processing and drawing).
+---
 
-mediapipe - (For Hand Tracking).
+## Gesture Mapping
 
-autopy - (For controlling the mouse movement and click).
+| Action | Hand Gesture |
+| :--- | :--- |
+| **Move Cursor** | **Index Finger Up** (Middle, Ring, and Pinky down) |
+| **Left Click** | **Index + Middle Finger Up AND close to each other** |
+| **Right Click** | **Index + Middle + Ring Finger Up AND close to each other** |
+| **Scroll** | **Index + Middle Finger Up (separated) AND moving vertically up/down** |
 
-numpy.
+---
 
-## Installation
-To use this project, follow the steps below:
+## 🛠️ Requirements & Installation
 
-1. Clone the repository:
+1. Clone or download the source code locally.
+2. Open your terminal in the target directory (where `main.py` is located).
+3. Ensure you have Python installed. If not, download it from [python.org](https://www.python.org/).
+4. Create a virtual environment (Optional but Recommended):
+   ```bash
+   python -m venv venv
+   # Activate it (Windows)
+   venv\Scripts\activate
+   # Activate it (Mac/Linux)
+   source venv/bin/activate
+   ```
+5. Install the required dependencies using the provided `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
+---
+
+## 🚀 Running The Application
+
+To launch your Virtual Mouse Controller, run the python script using your terminal:
+```bash
+python main.py
 ```
-git clone https://github.com/<USERNAME>/AI-Virtual-Mouse.git
-```
 
-2. Install the required dependencies using 'pip':
+### Tips for Best Use:
+1. **Background & Lighting**: Ensure you are in a well-lit room for MediaPipe to comfortably analyze key points continuously. 
+2. **Camera Positioning**: Face the webcam clearly with your hand fully inside the bounding border area visible in the tracking window.
+3. **Escaping**: To immediately exit the background application securely, press the **`Esc`** key on your physical keyboard while focused on the Camera tracking window.
 
-```
-pip install -r requirements.txt
-```
+---
 
-3. Run the main script:
-
-```
-aivirtualmouseproject.py
-```
-
-## How to Use
-
-To use the virtual mouse, make sure your computer has a camera and follow the steps below:
-
-1. Run the main script using the steps above.
-
-2. Place your hand in front of the camera with your palm facing down.
-
-3. Make a fist to activate the virtual mouse.
-
-4. Move your fingure to move the mouse pointer.
-
-5. Release your fist to click.
-
-6. Touch thumb and for fingure to right-click.
-
-7. Touch middle fingure and for fingure to left-click.
-
-To exit the application, stop the code running using code editor or directle close the GUI window.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue if you encounter any bugs or have any suggestions for improvement.
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## Potential Limitations
+- High dependence on steady environmental lighting. Low-light setups may negatively affect hand landmark point tracking.
+- Lower webcam quality might induce minor gesture translation delays.
+- Hand occlusion or complex background visuals behind your hand can interrupt accuracy metrics.
